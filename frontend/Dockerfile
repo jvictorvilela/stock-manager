@@ -1,4 +1,9 @@
-FROM node:18
+FROM node:18 as build-stage
 WORKDIR /app
-EXPOSE 8080
-CMD npm run serve
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+FROM nginx:1.21
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+EXPOSE 80

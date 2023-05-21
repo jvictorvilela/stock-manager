@@ -1,7 +1,11 @@
-const express = require('express'); 
-const cors = require('cors');
-require('dotenv/config');
-const db = require('./src/db/connection.js');
+import express from 'express'; 
+import cors from 'cors';
+import 'dotenv/config';
+import bodyParser from 'body-parser';
+import UserRoutes from './src/routes/UserRoutes.js';
+import LoginRoutes from './src/routes/LoginRoutes.js';
+import ProductRoutes from './src/routes/ProductRoutes.js';
+import MovementRoutes from './src/routes/MovementRoutes.js';
 
 const app = new express();
 const port = process.env.APP_PORT ?? 3000;
@@ -11,8 +15,12 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use(express.json());
+app.use(bodyParser.json());
 
-//app.use('/api')
+app.use('/login', LoginRoutes);
+app.use('/users', UserRoutes);
+app.use('/products', ProductRoutes)
+app.use('/movements', MovementRoutes)
 
 app.get('/', (req, res) => {
     res.send('Backend aqui :)');
@@ -21,9 +29,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`Aplicação backend rodando na porta ${port}.`);
 });
-
-db.authenticate().then(() => {
-    console.log('Conexão estabelecida com o banco.');
-}).catch((err) => {
-    console.log('Erro ao se conectar com o banco:', err);
-})
