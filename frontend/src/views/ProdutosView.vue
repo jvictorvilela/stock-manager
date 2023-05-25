@@ -27,9 +27,7 @@
                                 <input type="text" id="create-price" class="form-control" v-model="createForm.price"
                                     required>
                             </div>
-                            <div class="text-end">
-                                <button type="submit" class="btn btn-primary">Salvar</button>
-                            </div>
+                            <button type="submit" class="btn btn-primary">Salvar</button>
                         </form>
                     </div>
                 </div>

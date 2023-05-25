@@ -43,10 +43,22 @@ class MovementController {
                 delete movement.author.password;
                 return movement;
             })
-            
+
             return res.json(movements);
         } catch (error) {
             return res.status(500).json({ message: 'Erro ao listar movimentações.' })
+        }
+    }
+
+    static async delete(req, res) {
+        const id = parseInt(req.params.id);
+        try {
+            const prisma = new PrismaClient();
+            await prisma.movements.delete({ where: { id } });
+
+            return res.json({ message: 'Registro excluido com sucesso!' });
+        } catch (error) {
+            return res.status(500).json({ message: 'Erro ao excluir registro' });
         }
     }
 }

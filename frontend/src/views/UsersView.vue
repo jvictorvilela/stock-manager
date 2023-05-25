@@ -31,15 +31,15 @@
                     </div>
                     <div class="modal-body">
                         <form @submit.prevent="handleUserCreation">
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="name">Nome:</label>
                                 <input type="text" class="form-control" id="name" v-model="newUser.name" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="email">Email:</label>
                                 <input type="email" class="form-control" id="email" v-model="newUser.email" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="password">Senha:</label>
                                 <input type="password" class="form-control" id="password" v-model="newUser.password"
                                     required>
