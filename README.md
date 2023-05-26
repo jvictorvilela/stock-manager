@@ -1,4 +1,4 @@
-Este é um sistema de gerenciamento de estoque de produtos. 
+Sistema de gerenciamento de estoque de produtos.
 O projeto consiste em um back-end, desenvolvido com NodeJS, Express, Prisma e banco MySQL e um front-end, desenvolvido utilizando VueJS.
 
 # Instalação do projeto 
